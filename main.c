@@ -6,7 +6,7 @@ int main()
 {
 	// compareFibFunctions();
 	// compareUglyFunctions();
-	//testVectors();
-	testArrays();
+	testVectors();
+	//testArrays();
 	return 0;
 }

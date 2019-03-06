@@ -1,12 +1,90 @@
 #include "Vector.h"
 
+void vectorInit(vector *v) {
+	v->capacity = VECTOR_INIT_CAPACITY;
+	v->total = 0;
+	v->items = malloc(sizeof(void *) * v->capacity);
+}
+
+int  vectorTotal(vector *v) {
+	return v->total;
+}
+
+static void vectorResize(vector *v, int capacity) {
+#ifdef DEBUG_ON
+	printf("vectorResize: %d to %d\n", v->capacity, capacity);
+#endif
+
+	void **items = realloc(v->items, sizeof(void*) * capacity);
+	if (items) {
+		v->items = items;
+		v->capacity = capacity;
+	}
+}
+
+void vectorAdd(vector*v, void *item) {
+	if (v->capacity == v->total)
+		vectorResize(v, v->capacity * 2);
+	v->items[v->total++] = item;
+}
+
+void vectorSet(vector*v, int index, void *item) {
+	if (index >= 0 && index < v->total)
+		v->items[index] = item;
+}
+
+void* vectorGet(vector*v, int index) {
+	if (index >= 0 && index < v->total)
+			return v->items[index];
+	return NULL;
+}
+
+void vectorDelete(vector*v, int index) {
+	if (index < 0 || index >= v->total)
+		return;
+
+	v->items[index] = NULL;
+
+	for (int i = index; i < v->total - 1; i++) {
+		v->items[i] = v->items[i+1];
+		v->items[i+1] = NULL;
+	}
+
+	v->total--;
+
+	if (v->total > 0 && v->total == v->capacity / 4)
+		vectorResize(v, v->capacity / 2);
+}
+
+void vectorFree(vector*v) {
+	free(v->items);
+}
+
 void testVectors() {
-	vector v0;
-	v0.x = 3;
-	v0.y = 4;
+	int i;
 
-	vector v1 = {.x = -3, .y = -4};
+	vector v;
+	vectorInit(&v);
 
-	printf("\nv0.x %.2f, v0.y %.2f\n", v0.x, v0.y);
-	printf("\nv1.x %.2f, v1.y %.2f\n", v1.x, v1.y);
+	vectorAdd(&v, "Bonjour");
+	vectorAdd(&v, "tout");
+	vectorAdd(&v, "le");
+	vectorAdd(&v, "monde");
+
+	for (i=0; i<vectorTotal(&v);i++) {
+		printf("%s ", (char*) vectorGet(&v, i));
+	}
+	printf("\n");
+
+	vectorDelete(&v, 3);
+	vectorDelete(&v, 2);
+	vectorDelete(&v, 1);
+
+	vectorSet(&v, 0, "Hello");
+	vectorAdd(&v, "World");
+
+	for (i=0;i<vectorTotal(&v);i++)
+		printf("%s ", (char*) vectorGet(&v, i));
+	printf("\n");
+	vectorFree(&v);
 }
