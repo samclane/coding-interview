@@ -4,3 +4,4 @@ Partially inspired by the [Coding Interview University](https://github.com/jwash
 
  - [ ] Dynamic Programming (`/dynamic_programming/`)
 	- [x] Fibonacci Sequence
+	- [ ] Ugly Numbers
