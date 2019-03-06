@@ -3,6 +3,7 @@
  *
  *  Created on: Mar 6, 2019
  *      Author: SawyerPC
+ *  Based on: https://codereview.stackexchange.com/questions/64423/implementing-an-arraylist
  */
 
 #ifndef DATA_STRUCTURES_ARRAYLIST_H_

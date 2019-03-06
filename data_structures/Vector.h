@@ -3,6 +3,8 @@
  *
  *  Created on: Mar 6, 2019
  *      Author: SawyerPC
+ *
+ *  Original code found https://eddmann.com/posts/implementing-a-dynamic-vector-array-in-c/
  */
 
 #ifndef DATA_STRUCTURES_VECTOR_H_
