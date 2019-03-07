@@ -12,8 +12,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <assert.h>
 
 #define VECTOR_INIT_CAPACITY 4
+#define DEBUG_ON
 
 typedef struct vector {
 	void **items;
@@ -21,14 +24,15 @@ typedef struct vector {
 	int total;
 } vector;
 
-void vectorInit(vector *);
-int vectorTotal(vector *);
-static void vectorResize(vector *, int index);
+void vectorInit(vector* v);
+int vectorTotal(vector* v);
 void vectorAdd(vector* v, void *item);
 void vectorSet(vector* v, int index, void * item);
+void vectorInsert(vector* v, int index, void* item);
 void* vectorGet(vector*v, int index);
-void vectorDelete(vector*v, int index);
-void vectorFree(vector*v);
+void vectorDelete(vector* v, int index);
+void vectorFree(vector* v);
+bool vectorIsEmpty(vector* v);
 
 void testVectors();
 
