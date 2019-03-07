@@ -46,6 +46,16 @@ void vectorInsert(vector* v, int index, void* item){
 	}
 }
 
+void vectorPreappend(vector* v, void* item) {
+	vectorInsert(v, 0, item);
+}
+
+void* vectorPop(vector* v) {
+	void* temp = vectorGet(v, v->total-1);
+	vectorDelete(v, v->total-1);
+	return temp;
+}
+
 void* vectorGet(vector*v, int index) {
 	if (index >= 0 && index < v->total)
 			return v->items[index];
@@ -67,6 +77,15 @@ void vectorDelete(vector*v, int index) {
 
 	if (v->total > 0 && v->total == v->capacity / 4)
 		vectorResize(v, v->capacity / 2);
+}
+
+void vectorRemove(vector* v, void* item) {
+	int i;
+	for(i=0;i<v->total;i++) {
+		if (v->items[i] == item) {
+			vectorDelete(v, i);
+		}
+	}
 }
 
 void vectorFree(vector*v) {
@@ -114,5 +133,25 @@ void testVectors() {
 	for (i=0;i<vectorTotal(&v);i++)
 		printf("%s ", (char*) vectorGet(&v, i));
 	printf("\n");
+
+	vectorPreappend(&v, "TEST");
+	for (i=0;i<vectorTotal(&v);i++)
+		printf("%s ", (char*) vectorGet(&v, i));
+	printf("\n");
+
+	char* pop = vectorPop(&v);
+	printf("Popped: %s\n", pop);
+	for (i=0;i<vectorTotal(&v);i++)
+		printf("%s ", (char*) vectorGet(&v, i));
+	printf("\n");
+
+	vectorAdd(&v, "TEST");
+	vectorAdd(&v, "World");
+	vectorAdd(&v, "TEST");
+	vectorRemove(&v, "TEST");
+	for (i=0;i<vectorTotal(&v);i++)
+		printf("%s ", (char*) vectorGet(&v, i));
+	printf("\n");
+
 	vectorFree(&v);
 }
