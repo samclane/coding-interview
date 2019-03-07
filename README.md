@@ -5,6 +5,7 @@ Partially inspired by the [Coding Interview University](https://github.com/jwash
  - [ ] Data Structures (`/data_structures`)
  	- [x] Vector
  	- [x] ArrayList
+ 	- [ ] Binary Search Tree
  - [ ] Dynamic Programming (`/dynamic_programming/`)
 	- [x] Fibonacci Sequence
 	- [x] Ugly Numbers
