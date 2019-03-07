@@ -19,6 +19,8 @@ struct Node {
 
 struct Node* Insert(struct Node* root, void* data);
 bool Search(struct Node* root, void* data);
+void* FindMin(struct Node* root);
+void* FindMax(struct Node* root);
 void testBST();
 
 

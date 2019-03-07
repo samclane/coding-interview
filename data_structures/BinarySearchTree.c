@@ -7,6 +7,7 @@ struct Node* GetNewNode(void* data) {
 	newNode->right = NULL;
 	return newNode;
 }
+
 struct Node* Insert(struct Node* root, void* data) {
 	if (root == NULL) {
 		root = GetNewNode(data);
@@ -30,13 +31,37 @@ bool Search(struct Node* root, void* data) {
 		return Search(root->right, data);
 }
 
+void* FindMin(struct Node* root) {
+	if (root == NULL) {
+		printf("Error: Tree is empty\n");
+		return NULL;
+	}
+	while(root->left != NULL) {
+		root = root->left;
+	}
+	return root->data;
+}
+
+void* FindMax(struct Node* root) {
+	if (root == NULL) {
+		printf("Error: Tree is empty\n");
+		return NULL;
+	}
+	while(root->right != NULL) {
+		root = root->right;
+	}
+	return root->data;
+}
+
 void testBST() {
-	struct Node* root = NULL;
+	struct Node* root = NULL; // Create empty tree
+	// Insert dummy data
 	root = Insert(root, 15);
 	root = Insert(root, 10);
 	root = Insert(root, 20);
 	root = Insert(root, 8);
 
+	// User searches for a number
 	int number;
 	printf("Search: ");
 	fflush(stdout);
