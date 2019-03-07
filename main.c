@@ -3,6 +3,7 @@
 #include "data_structures/Vector.h"
 #include "data_structures/ArrayList.h"
 #include "data_structures/BinarySearchTree.h"
+#include "data_structures/LinkedList.h"
 
 int main()
 {
@@ -10,6 +11,7 @@ int main()
 	// compareUglyFunctions();
 	//testVectors();
 	//testArrays();
-	testBST();
+	//testBST();
+	testList();
 	return 0;
 }

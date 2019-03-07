@@ -53,21 +53,36 @@ void* FindMax(struct Node* root) {
 	return root->data;
 }
 
+int FindHeight(struct Node* root) {
+	if (root == NULL)
+		return -1;
+	int leftHeight = FindHeight(root->left);
+	int rightHeight = FindHeight(root->right);
+	return fmax(leftHeight, rightHeight) + 1;
+}
+
+void LevelOrder(struct Node* root) {
+	if (root == NULL)
+		return;
+}
+
 void testBST() {
 	struct Node* root = NULL; // Create empty tree
 	// Insert dummy data
-	root = Insert(root, 15);
-	root = Insert(root, 10);
-	root = Insert(root, 20);
-	root = Insert(root, 8);
+	root = Insert(root, (void*)15);
+	root = Insert(root, (void*)10);
+	root = Insert(root, (void*)20);
+	root = Insert(root, (void*)8);
 
 	// User searches for a number
 	int number;
 	printf("Search: ");
 	fflush(stdout);
 	scanf("%d", &number);
-	if (Search(root, number) == true)
+	if (Search(root, (void*)number) == true)
 		printf("Found\n");
 	else
 		printf("Not found\n");
+
+	printf("%d\n", FindHeight(root));
 }

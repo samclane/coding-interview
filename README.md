@@ -6,6 +6,8 @@ Partially inspired by the [Coding Interview University](https://github.com/jwash
  	- [x] Vector
  	- [x] ArrayList
  	- [ ] Binary Search Tree
+ 	- [ ] Doubly Linked Lists
+ 	- [ ] Queues
  - [ ] Dynamic Programming (`/dynamic_programming/`)
 	- [x] Fibonacci Sequence
 	- [x] Ugly Numbers

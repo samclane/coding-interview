@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <math.h>
+
 struct Node {
 	void* data;
 	struct Node* left;
@@ -21,6 +23,8 @@ struct Node* Insert(struct Node* root, void* data);
 bool Search(struct Node* root, void* data);
 void* FindMin(struct Node* root);
 void* FindMax(struct Node* root);
+int FindHeight(struct Node* root);
+void LevelOrder(struct Node* root);
 void testBST();
 
 
