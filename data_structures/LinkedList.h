@@ -11,13 +11,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct LinkedList {
+	struct ListItem* head;
+	struct ListItem* tail;
+};
+
 
 struct ListItem {
 	void* data;
-	struct ListItem* prev;
 	struct ListItem* next;
+	struct ListItem* prev;
 };
 
-void printList(struct ListItem* root);
+struct LinkedList* initList();
+struct ListItem* initItem();
+void appendData(struct LinkedList* root, void* data);
+void printList(struct LinkedList* root);
+void testList();
 
 #endif /* DATA_STRUCTURES_LINKEDLIST_H_ */
