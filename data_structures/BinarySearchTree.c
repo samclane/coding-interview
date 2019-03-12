@@ -1,14 +1,14 @@
 #include "BinarySearchTree.h"
 
-struct Node* GetNewNode(void* data) {
-	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+Node* GetNewNode(void* data) {
+	Node* newNode = (Node*)malloc(sizeof(Node));
 	newNode->data = data;
 	newNode->left = NULL;
 	newNode->right = NULL;
 	return newNode;
 }
 
-struct Node* Insert(struct Node* root, void* data) {
+Node* Insert(Node* root, void* data) {
 	if (root == NULL) {
 		root = GetNewNode(data);
 		return root;
@@ -20,7 +20,7 @@ struct Node* Insert(struct Node* root, void* data) {
 	return root;
 }
 
-bool Search(struct Node* root, void* data) {
+bool Search(Node* root, void* data) {
 	if (root == NULL)
 		return false;
 	else if (root->data == data)
@@ -31,7 +31,7 @@ bool Search(struct Node* root, void* data) {
 		return Search(root->right, data);
 }
 
-void* FindMin(struct Node* root) {
+void* FindMin(Node* root) {
 	if (root == NULL) {
 		printf("Error: Tree is empty\n");
 		return NULL;
@@ -42,7 +42,7 @@ void* FindMin(struct Node* root) {
 	return root->data;
 }
 
-void* FindMax(struct Node* root) {
+void* FindMax(Node* root) {
 	if (root == NULL) {
 		printf("Error: Tree is empty\n");
 		return NULL;
@@ -53,7 +53,7 @@ void* FindMax(struct Node* root) {
 	return root->data;
 }
 
-int FindHeight(struct Node* root) {
+int FindHeight(Node* root) {
 	if (root == NULL)
 		return -1;
 	int leftHeight = FindHeight(root->left);
@@ -61,13 +61,13 @@ int FindHeight(struct Node* root) {
 	return fmax(leftHeight, rightHeight) + 1;
 }
 
-void LevelOrder(struct Node* root) {
+void LevelOrder(Node* root) {
 	if (root == NULL)
 		return;
 }
 
 void testBST() {
-	struct Node* root = NULL; // Create empty tree
+	Node* root = NULL; // Create empty tree
 	// Insert dummy data
 	root = Insert(root, (void*)15);
 	root = Insert(root, (void*)10);
@@ -76,7 +76,7 @@ void testBST() {
 
 	// User searches for a number
 	int number;
-	printf("Search: ");
+	printf("Search BST: ");
 	fflush(stdout);
 	scanf("%d", &number);
 	if (Search(root, (void*)number) == true)
@@ -84,5 +84,5 @@ void testBST() {
 	else
 		printf("Not found\n");
 
-	printf("%d\n", FindHeight(root));
+	printf("BST height: %d\n", FindHeight(root));
 }

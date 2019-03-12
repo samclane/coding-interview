@@ -1,14 +1,15 @@
 #include "LinkedList.h"
 
-struct LinkedList* initList() {
-	struct LinkedList* newList = (struct LinkedList*)malloc(sizeof(struct LinkedList));
+LinkedList* initList() {
+	LinkedList* newList = (LinkedList*)malloc(sizeof(LinkedList));
 	(*newList).head = initItem();
-	(*newList).tail = (*newList).head;
+	(*newList).tail = initItem();
+	(*newList).head->next = (*newList).tail;
 	return newList;
 }
 
-struct ListItem* initItem() {
-	struct ListItem* newItem = (struct ListItem*)malloc(sizeof(struct ListItem));
+ListItem* initItem() {
+	ListItem* newItem = (ListItem*)malloc(sizeof(ListItem));
 	(*newItem).data = NULL;
 	(*newItem).next = NULL;
 	(*newItem).prev = NULL;
@@ -16,16 +17,16 @@ struct ListItem* initItem() {
 	return newItem;
 }
 
-void appendData(struct LinkedList* list, void* data) {
+void appendData(LinkedList* list, void* data) {
 	list->tail->data = data;
-	struct ListItem* newTail = initItem();
+	ListItem* newTail = initItem();
 	list->tail->next = newTail;
 	newTail->prev = list->tail;
 	list->tail = newTail;
 }
 
-void printList(struct LinkedList* list) {
-	struct ListItem* temp = list->head;
+void printList(LinkedList* list) {
+	ListItem* temp = list->head->next;
 	while (temp->data != NULL) {
 		printf("%d ", (int)temp->data);
 		fflush(stdout);
@@ -35,7 +36,7 @@ void printList(struct LinkedList* list) {
 }
 
 void testList() {
-	struct LinkedList* root = initList();
+	LinkedList* root = initList();
 	appendData(root, (void*)20);
 	appendData(root, (void*)125);
 

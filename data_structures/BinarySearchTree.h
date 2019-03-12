@@ -13,18 +13,18 @@
 #include <stdlib.h>
 #include <math.h>
 
-struct Node {
+typedef struct Node {
 	void* data;
 	struct Node* left;
 	struct Node* right;
-};
+}Node;
 
-struct Node* Insert(struct Node* root, void* data);
-bool Search(struct Node* root, void* data);
-void* FindMin(struct Node* root);
-void* FindMax(struct Node* root);
-int FindHeight(struct Node* root);
-void LevelOrder(struct Node* root);
+Node* Insert(Node* root, void* data);
+bool Search(Node* root, void* data);
+void* FindMin(Node* root);
+void* FindMax(Node* root);
+int FindHeight(Node* root);
+void LevelOrder(Node* root);
 void testBST();
 
 

@@ -11,22 +11,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct LinkedList {
-	struct ListItem* head;
-	struct ListItem* tail;
-};
-
-
-struct ListItem {
+typedef struct ListItem {
 	void* data;
 	struct ListItem* next;
 	struct ListItem* prev;
-};
+}ListItem;
 
-struct LinkedList* initList();
-struct ListItem* initItem();
-void appendData(struct LinkedList* root, void* data);
-void printList(struct LinkedList* root);
+typedef struct LinkedList {
+	ListItem* head;
+	ListItem* tail;
+}LinkedList;
+
+LinkedList* initList();
+ListItem* initItem();
+void appendData(LinkedList* root, void* data);
+void printList(LinkedList* root);
 void testList();
 
 #endif /* DATA_STRUCTURES_LINKEDLIST_H_ */
