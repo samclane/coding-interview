@@ -13,7 +13,7 @@ int main()
 	// testVectors();
 	// testArrays();
 	// testBST();
-	// testList();
+	testList();
 	testQueue();
 	return 0;
 }

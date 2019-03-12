@@ -14,7 +14,6 @@
 typedef struct ListItem {
 	void* data;
 	struct ListItem* next;
-	struct ListItem* prev;
 }ListItem;
 
 typedef struct LinkedList {

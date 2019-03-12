@@ -12,7 +12,6 @@ ListItem* initItem() {
 	ListItem* newItem = (ListItem*)malloc(sizeof(ListItem));
 	(*newItem).data = NULL;
 	(*newItem).next = NULL;
-	(*newItem).prev = NULL;
 
 	return newItem;
 }
@@ -21,7 +20,6 @@ void appendData(LinkedList* list, void* data) {
 	list->tail->data = data;
 	ListItem* newTail = initItem();
 	list->tail->next = newTail;
-	newTail->prev = list->tail;
 	list->tail = newTail;
 }
 
