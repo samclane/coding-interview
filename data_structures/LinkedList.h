@@ -23,8 +23,9 @@ typedef struct LinkedList {
 
 LinkedList* initList();
 ListItem* initItem();
-void appendData(LinkedList* root, void* data);
-void printList(LinkedList* root);
+void appendData(LinkedList* list, void* data);
+int size(LinkedList* list);
+void printList(LinkedList* list);
 void testList();
 
 #endif /* DATA_STRUCTURES_LINKEDLIST_H_ */

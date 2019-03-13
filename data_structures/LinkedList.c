@@ -23,9 +23,19 @@ void appendData(LinkedList* list, void* data) {
 	list->tail = newTail;
 }
 
+int size(LinkedList* list) {
+	ListItem* temp = list->head->next;
+	int count = 0;
+	while (temp != list->tail) {
+		temp = temp->next;
+		count++;
+	}
+	return count;
+}
+
 void printList(LinkedList* list) {
 	ListItem* temp = list->head->next;
-	while (temp->data != NULL) {
+	while (temp != list->tail) {
 		printf("%d ", (int)temp->data);
 		fflush(stdout);
 		temp = temp->next;
@@ -34,9 +44,12 @@ void printList(LinkedList* list) {
 }
 
 void testList() {
+	printf("Starting 'testList'...\n");
 	LinkedList* root = initList();
-	appendData(root, (void*)20);
-	appendData(root, (void*)125);
+	for(int i=0;i<500;i++)
+		appendData(root, (void*)i);
 
 	printList(root);
+	printf("Size: %d\n", size(root));
+	printf("'testList' finished!\n");
 }

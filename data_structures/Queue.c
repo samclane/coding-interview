@@ -18,6 +18,7 @@ bool queueEmpty(Queue q) {
 }
 
 void testQueue() {
+	printf("Starting 'testQueue'...\n");
 	Queue testQueue = initList();
 	printf(queueEmpty(testQueue)? "Empty\n" : "Not Empty\n");
 	queueEnqueue(testQueue, (void*)15);
@@ -31,4 +32,5 @@ void testQueue() {
 	printf("Removed %d\n", (int)queueDequeue(testQueue));
 	printf(queueEmpty(testQueue)? "Empty\n" : "Not Empty\n");
 	fflush(stdout);
+	printf("'testQueue' finished!\n");
 }
