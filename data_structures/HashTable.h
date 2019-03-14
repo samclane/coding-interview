@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
 
@@ -19,18 +20,19 @@ typedef struct HashTable {
 } HashTable;
 
 struct Item {
-	char* name;
-	char* drink;
+	char* key;
+	char* value;
 	struct Item* next;
 };
 
 struct Item* InitItemPtr();
-HashTable InitHash(const int SIZE);
+HashTable InitHash(const int size);
 int Hash(HashTable t, char* key);
-void AddItem(HashTable t, char* name, char* drink);
+void AddItem(HashTable t, char* key, char* value);
 int NumberOfItemsInIndex(HashTable t, int index);
 void PrintTable(HashTable t);
 void PrintItemsInIndex(HashTable t, int index);
+void FindValue(HashTable t, char* key);
 void testTable();
 
 #endif /* DATA_STRUCTURES_HASHTABLE_H_ */
