@@ -24,7 +24,6 @@ int Hash(HashTable t, char* key) {
 
 	for(int i = 0; i < strlen(key); i++) {
 		hash += (int)key[i];
-		printf("hash = %d\n", hash);
 	}
 
 	index = hash % t.tableSize;
@@ -75,7 +74,7 @@ void PrintTable(HashTable t) {
 		number = NumberOfItemsInIndex(t, i);
 		printf("------------------\n");
 		printf("index = %d\n", i);
-		printf("%s ", t.table[i]->name);
+		printf("%s\n", t.table[i]->name);
 		printf("%s\n", t.table[i]->drink);
 		printf("# of items %d\n", number);
 		printf("------------------\n");
@@ -83,6 +82,18 @@ void PrintTable(HashTable t) {
 }
 
 void testTable() {
-	HashTable Hashy = InitHash(100);
+	HashTable Hashy = InitHash(10);
+	AddItem(Hashy, "Paul", "Locha");
+	AddItem(Hashy, "Kim", "Iced Mocha");
+	AddItem(Hashy, "Emma", "Strawberry Smoothie");
+	AddItem(Hashy, "Annie", "Hot Chocolate");
+	AddItem(Hashy, "Sarah", "Passion Tea");
+	AddItem(Hashy, "Pepper", "Caramel Mocha");
+	AddItem(Hashy, "Mike", "Chai Tea");
+	AddItem(Hashy, "Steve", "Apple Cider");
+	AddItem(Hashy, "Bill", "Root Beer");
+	AddItem(Hashy, "Marie", "Skinny Latte");
+	AddItem(Hashy, "Susan", "Water");
+	AddItem(Hashy, "Joe", "Green Tea");
 	PrintTable(Hashy);
 }
