@@ -5,6 +5,7 @@
 #include "data_structures/BinarySearchTree.h"
 #include "data_structures/LinkedList.h"
 #include "data_structures/Queue.h"
+#include "data_structures/HashTable.h"
 
 int main()
 {
@@ -13,7 +14,8 @@ int main()
 	// testVectors();
 	// testArrays();
 	// testBST();
-	testList();
-	testQueue();
+	//testList();
+	//testQueue();
+	testTable();
 	return 0;
 }
