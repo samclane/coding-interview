@@ -81,6 +81,25 @@ void PrintTable(HashTable t) {
 	}
 }
 
+void PrintItemsInIndex(HashTable t, int index) {
+	struct Item* itemPtr = t.table[index];
+
+	if (strcmp(itemPtr->name, "empty") == 0) {
+		printf("index = %d is empty\n", index);
+	}
+	else {
+		printf("index %d contains the following items:\n", index);
+
+		while(itemPtr != NULL) {
+			printf("------------------\n");
+			printf("%s\n", itemPtr->name);
+			printf("%s\n", itemPtr->drink);
+			printf("------------------\n");
+			itemPtr = itemPtr->next;
+		}
+	}
+}
+
 void testTable() {
 	HashTable Hashy = InitHash(10);
 	AddItem(Hashy, "Paul", "Locha");
@@ -95,5 +114,6 @@ void testTable() {
 	AddItem(Hashy, "Marie", "Skinny Latte");
 	AddItem(Hashy, "Susan", "Water");
 	AddItem(Hashy, "Joe", "Green Tea");
-	PrintTable(Hashy);
+	// PrintTable(Hashy);
+	PrintItemsInIndex(Hashy, 9);
 }

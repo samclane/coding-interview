@@ -30,6 +30,7 @@ int Hash(HashTable t, char* key);
 void AddItem(HashTable t, char* name, char* drink);
 int NumberOfItemsInIndex(HashTable t, int index);
 void PrintTable(HashTable t);
+void PrintItemsInIndex(HashTable t, int index);
 void testTable();
 
 #endif /* DATA_STRUCTURES_HASHTABLE_H_ */
