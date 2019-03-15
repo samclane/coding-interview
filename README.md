@@ -8,6 +8,7 @@ Partially inspired by the [Coding Interview University](https://github.com/jwash
  	- [ ] Binary Search Tree
  	- [ ] Doubly Linked Lists
  	- [ ] Queues
+ 	- [x] Hash Tables
  - [ ] Dynamic Programming (`/dynamic_programming/`)
 	- [x] Fibonacci Sequence
 	- [x] Ugly Numbers
