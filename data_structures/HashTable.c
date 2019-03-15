@@ -121,8 +121,64 @@ void FindValue(HashTable t, char* key) {
 	}
 }
 
+void RemoveItem(HashTable t, char* key) {
+	int index = Hash(t, key);
+
+	struct Item* delPtr;
+	struct Item* P1;
+	struct Item* P2;
+
+	// Case 0 - Bucket is empty
+	if (strcmp(t.table[index]->key, "empty") == 0 && strcmp(t.table[index]->value, "empty") == 0) {
+		printf("%s was not found in the Hash Table\n", key);
+	}
+
+	// Case 1 - Only 1 Item in bucket + matching name
+	else if (strcmp(t.table[index]->key, key) == 0 && t.table[index]->next == NULL) {
+		t.table[index]->key = "empty";
+		t.table[index]->value = "empty";
+
+		printf("%s was removed from the Hash Table\n", key);
+	}
+
+	// Case 2 - There's a match in the first item, but there's more items too
+	else if (strcmp(t.table[index]->key, key) == 0) {
+		delPtr = t.table[index];
+		t.table[index] = t.table[index]->next;
+		free(delPtr);
+
+		printf("%s was removed from the Hash Table\n", key);
+	}
+
+	// Case 3 - Bucket contains items, first item doesn't match
+	else {
+		P1 = t.table[index]->next;
+		P2 = t.table[index];
+
+		while(P1 != NULL && strcmp(P1->key, key) != 0) {
+			P2 = P1;
+			P1 = P1->next;
+		}
+		// Case 3.1 - All items don't match
+		if(P1 == NULL) {
+			printf("%s was not found in the Hash Table\n", key);
+		}
+		// Case 3.2 - Match is found
+		else {
+			delPtr = P1;
+			P1 = P1->next;
+			P2->next = P1;
+
+			free(delPtr);
+			printf("%s was removed from the Hash Table\n", key);
+		}
+	}
+
+
+}
+
 void testTable() {
-	HashTable Hashy = InitHash(40);
+	HashTable Hashy = InitHash(4);
 	char name[256];
 
 	AddItem(Hashy, "Paul", "Locha");
@@ -138,6 +194,8 @@ void testTable() {
 	AddItem(Hashy, "Susan", "Water");
 	AddItem(Hashy, "Joe", "Green Tea");
 
+	PrintTable(Hashy);
+
 	while(strcmp(name, "exit") != 0) {
 		printf("Search for : ");
 		fflush(stdout);
@@ -145,8 +203,11 @@ void testTable() {
 		// Replace newline with null-terminator
 		name[strlen(name)-1] = '\0';
 		if (strcmp(name, "exit") != 0) {
-			FindValue(Hashy, name);
+			// FindValue(Hashy, name);
+			RemoveItem(Hashy, name);
 		}
 		fflush(stdout);
 	}
+
+	PrintTable(Hashy);
 }

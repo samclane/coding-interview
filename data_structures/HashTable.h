@@ -33,6 +33,7 @@ int NumberOfItemsInIndex(HashTable t, int index);
 void PrintTable(HashTable t);
 void PrintItemsInIndex(HashTable t, int index);
 void FindValue(HashTable t, char* key);
+void RemoveItem(HashTable t, char* key);
 void testTable();
 
 #endif /* DATA_STRUCTURES_HASHTABLE_H_ */
